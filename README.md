@@ -16,8 +16,6 @@ https://unique-story-book.netlify.app/
 
 ---
 
----
-
 ## Tech Stack Used : -
 
 <li>React</li>
