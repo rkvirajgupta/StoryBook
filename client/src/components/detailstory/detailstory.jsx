@@ -37,9 +37,7 @@ export const DetailStory = () => {
   },[])
 
   useEffect(() => {
-    if(!userData.email){
-      navigate("/");
-    }
+    dispatch(Updater(false));
   },[userData])
 
   return (
