@@ -2,32 +2,33 @@ import "./createstory.css";
 import swal from "sweetalert";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addStory } from "../../Redux/StorySlice/StorySlice";
+import { v4 as uuidv4 } from "uuid";
+
 export const Createstory = () => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user.user);
-  console.log("userdetails", user);
-
+  const dispatch = useDispatch();
   const [form, setForm] = useState({
+    _id: uuidv4(),
     title: "",
     about: "",
     type: "",
-    userId: user.userId,
+    userId: user,
   });
 
   const handleChange = (e) => {
-    console.log(e.target.name, e.target.value);
     const { name, value } = e.target;
     setForm({
       ...form,
       [name]: value,
     });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (user.userName === undefined) {
+    if (user.name === undefined) {
       swal({
         title: "Login First",
         text: "you need to login first to create story",
@@ -35,44 +36,23 @@ export const Createstory = () => {
         // dangerMode: true,
       });
       navigate("/login");
-    }
-    axios
-      .post(
-        "http://localhost:4700/post",
-        form,
-
-        {
-          headers: {
-            authorization: `Bearer ${user.userToken}`,
-          },
-        }
-      )
-      .then(function (response) {
-        // console.log(response);
-        swal({
-          title: "Story Posted",
-          text: `Story Posted with author ${user.userName}`,
-          icon: "success",
-          // dangerMode: true,
-        });
-        setForm({
-          title: "",
-          about: "",
-          type: "",
-          userId: user.userId,
-        });
-      })
-
-      .catch(function (error) {
-        // console.log(error);
-        if (user.userName !== undefined) {
-          swal({
-            title: `${error.response.data.message}`,
-            icon: "error",
-            // dangerMode: true,
-          });
-        }
+    } else {
+      dispatch(addStory(form));
+      swal({
+        title: "Story Posted",
+        text: `Story Posted with author ${user.name}`,
+        icon: "success",
+        // dangerMode: true,
       });
+      setForm({
+        _id: uuidv4(),
+        title: "",
+        about: "",
+        type: "",
+        userId: user,
+      });
+      navigate("/stories");
+    }
   };
   return (
     <>
@@ -90,6 +70,7 @@ export const Createstory = () => {
             autoFocus
             placeholder="Enter Your Title Here"
             onInput={handleChange}
+            maxLength={15}
           />
           <br />
           <label htmlFor="about">Description of your story:</label>
@@ -116,6 +97,7 @@ export const Createstory = () => {
             value={form.type}
             placeholder="Enter The Type of Story Here"
             onInput={handleChange}
+            maxLength={10}
           />
           <br />
           <input id="b1" type="submit" value="Post Story" />

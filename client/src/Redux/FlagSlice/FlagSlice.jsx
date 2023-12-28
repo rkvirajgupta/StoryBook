@@ -14,7 +14,6 @@ export const flagSlice = createSlice({
   },
 });
 
-// Action creators are generated for each case reducer function
 export const { Updater } = flagSlice.actions;
 
 export default flagSlice.reducer;

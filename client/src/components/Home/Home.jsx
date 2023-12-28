@@ -7,7 +7,7 @@ export const Home = () => {
   const user = useSelector((state) => state.user.user);
   const navigate = useNavigate();
   const handleStory = () => {
-    if (user.userName === undefined) {
+    if (user.name === undefined) {
       swal({
         title: "Login First",
         text: "you need to login first to create story",
@@ -16,7 +16,7 @@ export const Home = () => {
       });
       navigate("/login");
     }
-    if (user.userName !== undefined) {
+    if (user.name !== undefined) {
       navigate("/createstory");
     }
   };

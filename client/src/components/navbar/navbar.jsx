@@ -14,10 +14,7 @@ export const Navbar = () => {
   return (
     <div className="navdiv">
       <Link to="/" className="navdiv1">
-        <img
-          src={image}
-          alt="StoryBook"
-        />
+        <img src={image} alt="StoryBook" />
       </Link>
 
       <div>
@@ -32,14 +29,14 @@ export const Navbar = () => {
         </Link>
       </div>
       <div>
-        {user.userName === undefined ? (
+        {user.name === undefined ? (
           <Link to="/login" className="nav">
             <button className="btn4">Login</button>
           </Link>
         ) : (
           <div className="nvbtn nav">
             {" "}
-            <p> Hi, {user.userName}</p>
+            <p> Hi, {user.name}</p>
             <button
               className="btn4"
               onClick={() => {

@@ -10,7 +10,7 @@ describe("empty spec", () => {
 
   it("title", () => {
     cy.visit("http://localhost:3000/");
-    cy.title().should("eq", "ShowMan");
+    cy.title().should("eq", "StoryBook");
   });
   it("stories", () => {
     cy.visit("http://localhost:3000/");

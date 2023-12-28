@@ -2,7 +2,6 @@ import "./App.css";
 import { Login } from "./components/login/login";
 import { Stories } from "./components/product/product";
 import { About } from "./components/about/about";
-
 import { Signup } from "./components/signup/signup";
 import { Navbar } from "./components/navbar/navbar";
 import { Route, Routes } from "react-router-dom";
@@ -28,11 +27,10 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/stories" element={<Stories />}></Route>
         <Route path="/about" element={<About />}></Route>
-
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/createstory" element={<Createstory />}></Route>
-        <Route path="/detailstory/:id" element={<DetailStory />}></Route>
+        <Route path="/detailstory" element={<DetailStory />}></Route>
       </Routes>
       <Footer />
     </div>

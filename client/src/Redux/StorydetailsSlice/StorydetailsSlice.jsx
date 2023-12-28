@@ -14,7 +14,6 @@ export const storydetailsSlice = createSlice({
   },
 });
 
-// Action creators are generated for each case reducer function
 export const { StorydetailsData } = storydetailsSlice.actions;
 
 export default storydetailsSlice.reducer;
