@@ -1,5 +1,4 @@
 import "./about.css";
-import image from "../../assets/image.jpg";
 
 export const About = () => {
   return (
@@ -36,26 +35,20 @@ export const About = () => {
                 imagination and literary expression.
               </p>
             </div>
+            <div>
+              <h3>Our Mission</h3>
+              <p>
+                Our mission at StoryBook is to inspire and connect storytellers
+                worldwide. We aim to provide a platform where creativity
+                flourishes, diverse voices are celebrated, and the joy of shared
+                narratives enriches the lives of our community. Through
+                fostering a supportive environment, we strive to make
+                storytelling accessible, empowering individuals to express their
+                unique perspectives and contribute to a global tapestry of
+                imaginative tales.
+              </p>
+            </div>
           </div>
-          <div className="div2subdiv1div2">
-            <h3>Our Mission</h3>
-            <p>
-              Our mission at StoryBook is to inspire and connect storytellers
-              worldwide. We aim to provide a platform where creativity
-              flourishes, diverse voices are celebrated, and the joy of shared
-              narratives enriches the lives of our community. Through fostering
-              a supportive environment, we strive to make storytelling
-              accessible, empowering individuals to express their unique
-              perspectives and contribute to a global tapestry of imaginative
-              tales.
-            </p>
-          </div>
-        </div>
-
-        <div className="div2subdiv2">
-          <img src={image} alt="Viraj Gupta" />
-          <h5>Viraj Gupta</h5>
-          <p>Founder & CEO</p>
         </div>
       </div>
     </>
